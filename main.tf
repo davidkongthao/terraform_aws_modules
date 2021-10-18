@@ -14,3 +14,8 @@ module "security_groups" {
     vpc                     = module.vpc.main_vpc
     security_group_rules    = var.security_group_rules
 }
+
+module "iam" {
+    source                  = "./modules/iam"
+    admins                  = var.admin_users
+}

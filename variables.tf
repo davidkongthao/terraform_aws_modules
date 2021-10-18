@@ -102,3 +102,8 @@ variable "security_group_rules" {
     default = []
     type = list
 }
+
+variable "admin_users" {
+    default = []
+    type = list
+}
