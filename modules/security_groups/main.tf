@@ -70,7 +70,7 @@ resource "aws_security_group" "app_security_group" {
             description         = "Allows HTTP access from DMZ tier to App tier."
             from_port           = 80
             to_port             = 80
-            protocol            = "-1"
+            protocol            = "tcp"
             cidr_blocks         = []
             ipv6_cidr_blocks    = []
             prefix_list_ids     = []
