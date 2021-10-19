@@ -5,9 +5,10 @@ provider "aws" {
 
     default_tags {
         tags = {
-            Environment             = "Development"
+            Environment             = "${var.aws_environment_name}"
             Owner                   = "${var.aws_owner_contact}"
             Project                 = "${var.aws_project_name}"
+            Contact                 = "${var.aws_owner_contact}"
         }
     }
 }

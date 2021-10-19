@@ -23,6 +23,11 @@ variable "aws_project_name" {
     type = string
 }
 
+variable "aws_environment_name" {
+    default = ""
+    type = string
+}
+
 variable "ami" {
     default = ""
     type = string
