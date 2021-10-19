@@ -107,3 +107,8 @@ variable "admin_users" {
     default = []
     type = list
 }
+
+variable "primary_dns_name" {
+    default = ""
+    type = string
+}

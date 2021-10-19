@@ -19,3 +19,8 @@ module "iam" {
     source                  = "./modules/iam"
     admins                  = var.admin_users
 }
+
+module "dns" {
+    source                  = "./modules/dns"
+    primary_dns_name        = var.primary_dns_name
+}

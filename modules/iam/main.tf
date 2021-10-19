@@ -31,7 +31,7 @@ resource "aws_iam_user" "admin_users" {
 }
 
 resource "aws_iam_access_key" "admin_access_keys" {
-    for_each            = toset(var.admins)
+    for_each            = aws_iam_user.admin_users
     user                = each.key
 }
 
