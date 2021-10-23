@@ -1,6 +1,6 @@
 resource "aws_security_group" "admin_security_group" {
     name                        = "main-admin-sg"
-    description                 = "Main Administrators Security Group for Environment."
+    description                 = "Main Administrators Security Group that allows access to all ports / subnets from the Administrator subnet."
     vpc_id                      = var.vpc
 
     ingress = [
@@ -29,7 +29,7 @@ resource "aws_security_group" "dmz_security_group" {
 
     ingress = [
         {
-            description         = "Allows HTTPS access from Public Internet to DMZ servers."
+            description         = "Allows HTTPS access from Public Internet."
             from_port           = 443
             to_port             = 443
             protocol            = "tcp"

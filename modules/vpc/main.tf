@@ -102,3 +102,13 @@ resource "aws_subnet" "db_subnet_c" {
         Name                = "DBSubnetC"
     }
 }
+
+resource "aws_db_subnet_group" "primary_db_subnet_group" {
+    name                    = "primary-db-subnet-group"
+    subnet_ids              = [aws_subnet.db_subnet_a.id, aws_subnet.db_subnet_b.id, aws_subnet.db_subnet_c.id]
+    description             = "Primary subnet group for DB tier."
+
+    tags = {
+        Name                = "primary-db-subnet-group"
+    }
+}

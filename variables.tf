@@ -117,3 +117,28 @@ variable "primary_dns_name" {
     default = ""
     type = string
 }
+
+variable "rds_username" {
+    default = ""
+    type = string
+}
+
+variable "rds_password" {
+    default = ""
+    type = string
+}
+
+variable "rds_db_name" {
+    default = ""
+    type = string
+}
+
+variable "rds_db_instance_class" {
+    default = ""
+    type = string
+}
+
+variable "rds_db_az" {
+    default = ""
+    type = string
+}
