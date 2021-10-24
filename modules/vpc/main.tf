@@ -13,6 +13,38 @@ resource "aws_vpc" "main" {
     }
 }
 
+resource "aws_internet_gateway" "main_internet_gateway" {
+    vpc_id                  = aws_vpc.main.id
+
+    tags = {
+        Name                = "MainInternetGateway"
+    }
+}
+
+resource "aws_default_route_table" "main_route_table" {
+    default_route_table_id  = aws_vpc.main.default_route_table_id
+
+    route = [
+        {
+            cidr_block                      = "0.0.0.0/0"
+            gateway_id                      = aws_internet_gateway.main_internet_gateway.id
+            destination_prefix_list_id      = ""
+            egress_only_gateway_id          = ""
+            instance_id                     = ""
+            ipv6_cidr_block                 = ""
+            nat_gateway_id                  = ""
+            network_interface_id            = ""
+            transit_gateway_id              = ""
+            vpc_endpoint_id                 = ""
+            vpc_peering_connection_id       = ""
+        }
+    ]
+    
+    tags = {
+        Name                = "DefaultRouteTable"
+    }
+}
+
 resource "aws_subnet" "dmz_subnet_a" {
     vpc_id                  = aws_vpc.main.id
     cidr_block              = var.dmz_subnet_cidrs[0]

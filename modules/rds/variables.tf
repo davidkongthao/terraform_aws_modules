@@ -47,3 +47,18 @@ variable "db_subnet_group_name" {
     type = string
     default = ""
 }
+
+variable "db_engine" {
+    type = string
+    default = ""
+}
+
+variable "db_engine_version" {
+    type = string
+    default = ""
+}
+
+variable "primary_db_identifier" {
+    type = string
+    default = ""
+}

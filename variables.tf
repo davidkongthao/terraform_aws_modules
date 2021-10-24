@@ -118,6 +118,11 @@ variable "primary_dns_name" {
     type = string
 }
 
+variable "mx_dns_records" {
+    default = []
+    type = list
+}
+
 variable "rds_username" {
     default = ""
     type = string
@@ -133,12 +138,27 @@ variable "rds_db_name" {
     type = string
 }
 
-variable "rds_db_instance_class" {
+variable "rds_instance_class" {
     default = ""
     type = string
 }
 
 variable "rds_db_az" {
+    default = ""
+    type = string
+}
+
+variable "rds_engine" {
+    default = ""
+    type = string
+}
+
+variable "rds_engine_version" {
+    default = ""
+    type = string
+}
+
+variable "primary_rds_identifier" {
     default = ""
     type = string
 }
