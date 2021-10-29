@@ -113,6 +113,11 @@ variable "admin_users" {
     type = list
 }
 
+variable "email_zone_name" {
+    default = ""
+    type = string
+}
+
 variable "primary_dns_name" {
     default = ""
     type = string
@@ -121,6 +126,11 @@ variable "primary_dns_name" {
 variable "mx_dns_records" {
     default = []
     type = list
+}
+
+variable "sendgrid_dns_records"{
+    default = {}
+    type = map
 }
 
 variable "rds_username" {

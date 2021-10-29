@@ -20,10 +20,17 @@ module "iam" {
     admins                  = var.admin_users
 }
 
+module "compute" {
+    source                  = "./modules/compute"
+    iam_profile             = module.iam.default_instance_profile
+}
+
 module "dns" {
     source                  = "./modules/dns"
     primary_dns_name        = var.primary_dns_name
     mx_dns_records          = var.mx_dns_records
+    sendgrid_dns_records    = var.sendgrid_dns_records
+    email_zone_name         = var.email_zone_name
 }
 
 module "kms" {

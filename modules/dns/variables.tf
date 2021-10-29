@@ -7,3 +7,13 @@ variable "mx_dns_records" {
     default = []
     type = list
 }
+
+variable "sendgrid_dns_records" {
+    default = {}
+    type = map
+}
+
+variable "email_zone_name" {
+    default = ""
+    type = string
+}
