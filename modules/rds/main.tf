@@ -1,5 +1,5 @@
 resource "aws_db_instance" "primary_db" {
-    allocated_storage               = 50
+    allocated_storage               = 20
     engine                          = var.db_engine
     engine_version                  = var.db_engine_version
     instance_class                  = var.db_instance_class
@@ -13,7 +13,7 @@ resource "aws_db_instance" "primary_db" {
     skip_final_snapshot             = true
     publicly_accessible             = true
     apply_immediately               = true
-    storage_encrypted               = true
+#    storage_encrypted               = true
 
     tags = {
         Name                        = "${var.db_name}"
