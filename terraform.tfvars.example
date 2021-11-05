@@ -3,12 +3,13 @@ aws_credentials_location            = ""
 aws_default_region                  = ""
 aws_owner_contact                   = ""
 aws_project_name                    = ""
+aws_environment_name                = ""
 ami                                 = ""
 instance_type                       = ""
 vpc_cidr_block                      = ""
 vpc_instance_tenancy                = ""
-enable_dns_support                  = boolean
-enable_dns_hostnames                = boolean
+enable_dns_support                  = bool
+enable_dns_hostnames                = bool
 dmz_subnet_cidr_a                   = ""
 dmz_subnet_cidr_b                   = ""
 dmz_subnet_cidr_c                   = ""
@@ -19,6 +20,16 @@ db_subnet_cidr_a                    = ""
 db_subnet_cidr_b                    = ""
 db_subnet_cidr_c                    = ""
 security_group_rules                = []
-
-
-
+admin_users                         = []
+primary_dns_name                    = ""
+email_zone_name                     = ""
+mx_dns_records                      = []
+sendgrid_dns_records                = {}
+rds_username                        = ""
+rds_password                        = ""
+rds_instance_class                  = ""
+rds_db_az                           = ""
+rds_engine                          = ""
+rds_engine_version                  = ""
+rds_db_name                         = ""
+primary_rds_identifier              = ""
