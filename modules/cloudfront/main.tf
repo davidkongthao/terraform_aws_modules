@@ -55,3 +55,9 @@ resource "aws_cloudfront_distribution" "dev_cdn_distribution" {
     comment                         = "Dev CloudFront CDN"
     price_class                     = "PriceClass_100"
 }
+
+resource "aws_cloudfront_public_key" "dev_cdn_public_key" {
+    comment                         = "Dev CDN Public Key"
+    encoded_key                     = file("./assets/cloudfront/public_key.pem")
+    name                            = "dev_cdn_key"
+}

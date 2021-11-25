@@ -17,3 +17,13 @@ variable "email_zone_name" {
     default = ""
     type = string
 }
+
+variable "cdn_dns_name" {
+    default = ""
+    type = string
+}
+
+variable "cdn_cname_name" {
+    default = ""
+    type = string
+}

@@ -33,6 +33,8 @@ module "dns" {
     mx_dns_records          = var.mx_dns_records
     sendgrid_dns_records    = var.sendgrid_dns_records
     email_zone_name         = var.email_zone_name
+    cdn_cname_name          = var.acm_cdn_alias
+    cdn_dns_name            = module.cloudfront.cloudfront_domain_name
 }
 
 module "kms" {
