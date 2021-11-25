@@ -42,7 +42,26 @@ module "kms" {
 module "s3" {
     source                  = "./modules/s3"
     s3_bucket_name          = var.s3_bucket_name
+    s3_log_bucket_name      = var.s3_log_bucket_name
     kms_key                 = module.kms.enterprise_kms_key
+}
+
+module "acm" {
+    source                  = "./modules/acm"
+    providers               = {
+        aws                 = aws.useastone
+    }
+    cdn_alias               = var.acm_cdn_alias
+    primary_dns_name        = var.primary_dns_name
+}
+
+module "cloudfront" {
+    source                  = "./modules/cloudfront"
+    s3_bucket_domain_name   = module.s3.s3_bucket_domain_name
+    s3_log_domain_name      = module.s3.s3_logs_bucket_domain_name
+    s3_origin_id            = var.s3_origin_id
+    cdn_aliases             = var.cloudfront_cdn_aliases
+    cdn_acm_arn             = module.acm.cdn_acm_arn
 }
 
 module "rds" {

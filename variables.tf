@@ -178,7 +178,27 @@ variable "s3_bucket_name" {
     type = string
 }
 
+variable "s3_log_bucket_name" {
+    default = ""
+    type = string
+}
+
 variable "s3_service_accounts" {
     default = []
     type = list
+}
+
+variable "s3_origin_id" {
+    default = ""
+    type = string
+}
+
+variable "cloudfront_cdn_aliases"{
+    default = []
+    type = list
+}
+
+variable "acm_cdn_alias" {
+    default = ""
+    type = string
 }
