@@ -172,3 +172,13 @@ variable "primary_rds_identifier" {
     default = ""
     type = string
 }
+
+variable "s3_bucket_name" {
+    default = ""
+    type = string
+}
+
+variable "s3_service_accounts" {
+    default = []
+    type = list
+}

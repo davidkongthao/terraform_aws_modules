@@ -16,3 +16,16 @@ output "ent_admins_access_keys" {
     sensitive = true
 }
 
+output "s3_users_secret_keys" {
+    value = toset([
+        for key in aws_iam_access_key.s3_access_keys : key.secret
+    ])
+    sensitive = true
+}
+
+output "s3_useres_access_keys" {
+    value = toset([
+        for key in aws_iam_access_key.s3_access_keys : key.id
+    ])
+    sensitive = true
+}

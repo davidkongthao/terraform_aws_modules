@@ -18,6 +18,8 @@ module "security_groups" {
 module "iam" {
     source                  = "./modules/iam"
     admins                  = var.admin_users
+    dev_s3_bucket           = module.s3.dev_s3_bucket
+    s3_service_accounts     = var.s3_service_accounts
 }
 
 module "compute" {
@@ -35,6 +37,12 @@ module "dns" {
 
 module "kms" {
     source                  = "./modules/kms"
+}
+
+module "s3" {
+    source                  = "./modules/s3"
+    s3_bucket_name          = var.s3_bucket_name
+    kms_key                 = module.kms.enterprise_kms_key
 }
 
 module "rds" {

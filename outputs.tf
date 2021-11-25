@@ -9,3 +9,11 @@ output "access_keys" {
 output "primary_db" {
     value = module.rds.primary_db
 }
+
+output "s3_secret_keys" {
+    value = nonsensitive(module.iam.s3_users_secret_keys)
+}
+
+output "s3_access_keys" {
+    value = nonsensitive(module.iam.s3_useres_access_keys)
+}
