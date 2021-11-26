@@ -17,3 +17,7 @@ output "s3_secret_keys" {
 output "s3_access_keys" {
     value = nonsensitive(module.iam.s3_useres_access_keys)
 }
+
+output "cdn_public_key" {
+    value = module.cloudfront.cdn_public_key
+}

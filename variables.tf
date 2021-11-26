@@ -183,9 +183,9 @@ variable "s3_log_bucket_name" {
     type = string
 }
 
-variable "s3_service_accounts" {
-    default = []
-    type = list
+variable "s3_service_account" {
+    default = ""
+    type = string
 }
 
 variable "s3_origin_id" {
@@ -198,7 +198,7 @@ variable "cloudfront_cdn_aliases"{
     type = list
 }
 
-variable "acm_cdn_alias" {
+variable "cdn_alias" {
     default = ""
     type = string
 }

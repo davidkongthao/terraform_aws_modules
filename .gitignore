@@ -1,8 +1,9 @@
 # Local .terraform directories
 **/.terraform/*
 
-# ignore .pem files
+# ignore *.pem and *.json files
 *.pem
+*.json
 
 # .tfstate files
 *.tfstate

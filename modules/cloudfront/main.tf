@@ -1,18 +1,18 @@
-resource "aws_cloudfront_origin_access_identity" "dev_cdn_oai" {
+resource "aws_cloudfront_origin_access_identity" "cdn_oai" {
     comment                         = "Dev CDN OAI"
 }
 
-resource "aws_cloudfront_distribution" "dev_cdn_distribution" {
+resource "aws_cloudfront_distribution" "cdn_distribution" {
     origin {
         domain_name                 = var.s3_bucket_domain_name
         origin_id                   = var.s3_origin_id
 
         s3_origin_config {
-            origin_access_identity = aws_cloudfront_origin_access_identity.dev_cdn_oai.cloudfront_access_identity_path
+            origin_access_identity = aws_cloudfront_origin_access_identity.cdn_oai.cloudfront_access_identity_path
         }
     }
 
-    aliases = var.cdn_aliases
+    aliases = [var.cdn_alias]
 
     logging_config {
         include_cookies             = false
@@ -42,6 +42,7 @@ resource "aws_cloudfront_distribution" "dev_cdn_distribution" {
     viewer_certificate {
         acm_certificate_arn         = var.cdn_acm_arn
         ssl_support_method          = "sni-only"
+        minimum_protocol_version    = "TLSv1.2_2019"
     }
 
     restrictions {
@@ -56,8 +57,8 @@ resource "aws_cloudfront_distribution" "dev_cdn_distribution" {
     price_class                     = "PriceClass_100"
 }
 
-resource "aws_cloudfront_public_key" "dev_cdn_public_key" {
+resource "aws_cloudfront_public_key" "cdn_public_key" {
     comment                         = "Dev CDN Public Key"
     encoded_key                     = file("./assets/cloudfront/public_key.pem")
-    name                            = "dev_cdn_key"
+    name                            = "cdn_key"
 }

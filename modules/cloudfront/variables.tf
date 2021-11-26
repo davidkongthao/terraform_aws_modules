@@ -13,9 +13,9 @@ variable "s3_origin_id" {
     type = string
 }
 
-variable "cdn_aliases" {
-    default = []
-    type = list
+variable "cdn_alias" {
+    default = ""
+    type = string
 }
 
 variable "cdn_acm_arn" {

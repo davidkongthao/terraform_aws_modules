@@ -18,8 +18,8 @@ module "security_groups" {
 module "iam" {
     source                  = "./modules/iam"
     admins                  = var.admin_users
-    dev_s3_bucket           = module.s3.dev_s3_bucket
-    s3_service_accounts     = var.s3_service_accounts
+    app_s3_bucket           = module.s3.app_s3_bucket
+    s3_service_account      = var.s3_service_account
 }
 
 module "compute" {
@@ -33,7 +33,7 @@ module "dns" {
     mx_dns_records          = var.mx_dns_records
     sendgrid_dns_records    = var.sendgrid_dns_records
     email_zone_name         = var.email_zone_name
-    cdn_cname_name          = var.acm_cdn_alias
+    cdn_alias               = var.cdn_alias
     cdn_dns_name            = module.cloudfront.cloudfront_domain_name
 }
 
@@ -45,6 +45,8 @@ module "s3" {
     source                  = "./modules/s3"
     s3_bucket_name          = var.s3_bucket_name
     s3_log_bucket_name      = var.s3_log_bucket_name
+    s3_user                 = module.iam.s3_user
+    cdn_oai_arn             = module.cloudfront.cdn_oai_arn
     kms_key                 = module.kms.enterprise_kms_key
 }
 
@@ -53,7 +55,7 @@ module "acm" {
     providers               = {
         aws                 = aws.useastone
     }
-    cdn_alias               = var.acm_cdn_alias
+    cdn_alias               = var.cdn_alias
     primary_dns_name        = var.primary_dns_name
 }
 
@@ -62,7 +64,7 @@ module "cloudfront" {
     s3_bucket_domain_name   = module.s3.s3_bucket_domain_name
     s3_log_domain_name      = module.s3.s3_logs_bucket_domain_name
     s3_origin_id            = var.s3_origin_id
-    cdn_aliases             = var.cloudfront_cdn_aliases
+    cdn_alias               = var.cdn_alias
     cdn_acm_arn             = module.acm.cdn_acm_arn
 }
 

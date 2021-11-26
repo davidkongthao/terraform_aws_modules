@@ -23,7 +23,7 @@ variable "cdn_dns_name" {
     type = string
 }
 
-variable "cdn_cname_name" {
+variable "cdn_alias" {
     default = ""
     type = string
 }

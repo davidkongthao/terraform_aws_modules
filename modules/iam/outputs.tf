@@ -17,15 +17,15 @@ output "ent_admins_access_keys" {
 }
 
 output "s3_users_secret_keys" {
-    value = toset([
-        for key in aws_iam_access_key.s3_access_keys : key.secret
-    ])
+    value = aws_iam_access_key.s3_access_keys.secret
     sensitive = true
 }
 
 output "s3_useres_access_keys" {
-    value = toset([
-        for key in aws_iam_access_key.s3_access_keys : key.id
-    ])
+    value = aws_iam_access_key.s3_access_keys.id
     sensitive = true
+}
+
+output "s3_user" {
+    value = aws_iam_user.app_s3_service_user.arn
 }

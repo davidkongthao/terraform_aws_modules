@@ -3,12 +3,12 @@ variable "admins" {
     type = list
 }
 
-variable "dev_s3_bucket" {
+variable "app_s3_bucket" {
     default = ""
     type = string
 }
 
-variable "s3_service_accounts" {
-    default = []
-    type = list
+variable "s3_service_account" {
+    default = ""
+    type = string
 }

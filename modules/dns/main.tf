@@ -19,9 +19,9 @@ resource "aws_route53_record" "sendgrid_dns_records" {
     records             = [each.value]
 }
 
-resource "aws_route53_record" "dev_cdn_cname_record" {
+resource "aws_route53_record" "cdn_cname_record" {
     zone_id             = aws_route53_zone.primary_zone.id
-    name                = var.cdn_cname_name
+    name                = var.cdn_alias
     type                = "CNAME"
     ttl                 = 300
     records             = [var.cdn_dns_name]

@@ -12,3 +12,13 @@ variable "kms_key" {
     default = ""
     type = string
 }
+
+variable "s3_user" {
+    default = ""
+    type = string
+}
+
+variable "cdn_oai_arn" {
+    default = ""
+    type = string
+}
